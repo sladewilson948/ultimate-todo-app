@@ -197,9 +197,22 @@ h2
 }
 
 
-#my-delete
+#my-delete 
 {
-    background-color: #ffba0b;
+    background-color: #000000;
+    color: azure;
+    height: 35px;
+    font-family: "Courier Prime", monospace;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 4px solid black;
+}
+
+
+#new-choice
+{
+    background-color: #000000;
+    color: azure;
     height: 35px;
     font-family: "Courier Prime", monospace;
     font-size: 18px;

@@ -1,9 +1,9 @@
-window.addEventListener('beforeunload', function (e) {
-    // Cancel the event
-    e.preventDefault();
-    // Chrome requires returnValue to be set
-    e.returnValue = 'Are you sure you want to leave?';
-});
+// window.addEventListener('beforeunload', function (e) {
+//     // Cancel the event
+//     e.preventDefault();
+//     // Chrome requires returnValue to be set
+//     e.returnValue = 'Are you sure you want to leave?';
+// });
 
 
 function addTask(){
@@ -22,8 +22,23 @@ function addTask(){
     ele1.textContent = `task : ${task}`
     const ele2 = document.createElement("p")
     ele2.textContent = `name : ${description}`
-    const priority = document.createElement("p")
-    priority.textContent = `class : ${getValue()}`
+    const priority = document.createElement("select")
+    priority.name = "choices"
+    priority.id = "new-choice"
+    const ops1 = document.createElement("option")
+    ops1.value = "1"
+    ops1.textContent = "High"
+    const ops2 = document.createElement("option")
+    ops2.value = "2"
+    ops2.textContent = "Medium"
+    const ops3 = document.createElement("option")
+    ops3.value = "3"
+    ops3.textContent = "Low"
+
+    priority.append(ops1)
+    priority.append(ops2)
+    priority.append(ops3)
+    priority.value = document.getElementById("choice").value
     const ele3 = document.createElement("button")
     ele3.id = "my-delete"
     ele3.textContent = "Delete"
@@ -47,12 +62,12 @@ function addTask(){
     ele4.id = id
     ele4.className = "item"
     ele4.style.backgroundColor = getColor()
-    // this line helps us to put priortuiy to our tasks
+    // this line helps us to put priority to our tasks
     ele4.dataset.priority = getValue()
     ele4.append(justone)
     ele4.append(justtwo)
     //ele4.append(ele3)
-    const temp1 = ele4.style.backgroundColor
+    
     const tasklist = document.querySelector(".my-tasks")
     tasklist.prepend(ele4)
 
@@ -67,8 +82,27 @@ function addTask(){
                 elementToDelete.parentNode.removeChild(elementToDelete)
             }
     })
+    let temp1 = ele4.style.backgroundColor
+    priority.addEventListener('change', function(){
+        if(priority.value==3)
+            {
+                ele4.style.backgroundColor = "#CBB114"
+                ele4.dataset.priority = "Low"
+                temp1 = "#CBB114"
+            }
+        else if(priority.value==2)
+            {
+                ele4.style.backgroundColor = "#CF7014"
+                ele4.dataset.priority = "Medium"
+                temp1 = "#CF7014"
 
-
+            }
+        else{
+            ele4.style.backgroundColor = "#CF4214"
+            ele4.dataset.priority = "High"
+            temp1 = "#CF4214"
+        }
+    })
     check.addEventListener('change', function() {
         ele4.style.backgroundColor = this.checked?"green":temp1
     })
@@ -145,6 +179,7 @@ function sortTasksLH()
 
 
     const taskList = document.querySelector(".my-tasks")
+    console.log(taskList)
     const tasks = Array.from(taskList.getElementsByClassName("item"))
     console.log(tasks)
     const priorityOrder = { 'High': 1, 'Medium': 2, 'Low': 3 };
