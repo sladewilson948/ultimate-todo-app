@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo JavaScript</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="header">
+        <h1>ToDo or Not ToDo</h1>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Info</a></li>
+            <li><a href="">Login</a></li>
+        </ul>
+    
+    </section>
+    
+    <div class="add-data">
+    
+    <section class="form">
+        <h2>Manage your tasks</h2>
+        <br>
+        <div class="form-group">
+            <label for="task">Enter task name</label>
+            <input type="text" id="taskname">
+        </div>
+        <div class="form-group">
+            <label for="description">Enter description</label>
+            <input type="text" id="description">
+        </div>
+        <div class="form-group">
+            <label for="priority">Select priority</label>
+            <select name="choices" id="choice">
+                <option value="1">High</option>
+                <option value="2">Medium</option>
+                <option value="3">Low</option>
+            </select>
+        </div>
+        <div class="form-group" style="display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;">
+            <button onclick="addTask()">Submit</button>
+            <button onclick="sortTasksHL()">Sort High</button>
+            <button onclick="sortTasksLH()">Sort Low</button>
+            <button onclick="shuffle()">Shuffle</button>
+        </div>
+    </section>
+    </div>
+    <div class="container">
+        <section class="my-tasks">
+        </section>
+        
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <section class="footer">
+        Made with 🖤 by Aman Dubey
+    </section>
+</body>
+</html>
