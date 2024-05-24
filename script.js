@@ -58,7 +58,7 @@ function addTask(){
 
     ele3.addEventListener('click', function() {
 
-        console.log(id)
+        
         let elementToDelete = document.getElementById(id)
         if(elementToDelete)
             {
@@ -70,22 +70,7 @@ function addTask(){
 
 
     check.addEventListener('change', function() {
-        
-        
-        if(this.checked)
-            {
-                ele4.style.backgroundColor = "green"
-                
-                console.log(temp1)
-            }
-        else{
-            ele4.style.backgroundColor = temp1
-            
-            console.log(temp1)
-        }
-
-        
-        
+        ele4.style.backgroundColor = this.checked?"green":temp1
     })
 
     document.getElementById("taskname").value = ""
