@@ -177,7 +177,23 @@ h2
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    border-radius: 3px solid black;
+    border: 1.5px solid black;
+}
+
+#my-options
+{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 120px;
+}
+
+#click-me
+{
+    height: 20px;
+    width: -20px;
+    background-color: #fae1a4;
 }
 
 

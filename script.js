@@ -1,13 +1,14 @@
-window.addEventListener('beforeunload', function (e) {
-    // Cancel the event
-    e.preventDefault();
-    // Chrome requires returnValue to be set
-    e.returnValue = 'Are you sure you want to leave?';
-});
+// window.addEventListener('beforeunload', function (e) {
+//     // Cancel the event
+//     e.preventDefault();
+//     // Chrome requires returnValue to be set
+//     e.returnValue = 'Are you sure you want to leave?';
+// });
 
 
 function addTask(){
 
+    
     const id = "ele" + getUniqueId()
     const task = document.getElementById("taskname").value
     const description = document.getElementById("description").value
@@ -27,10 +28,20 @@ function addTask(){
     ele3.id = "my-delete"
     ele3.textContent = "Delete"
 
+    const check = document.createElement("input")
+    check.type = "checkbox"
+    check.id = "click-me"
+
     const justone = document.createElement("p")
+    const justtwo = document.createElement("p1")
+    justtwo.id = "my-options"
+
     justone.append(ele1)
     justone.append(ele2)
     justone.append(priority)
+
+    justtwo.append(ele3)
+    justtwo.append(check)
     
     const ele4 = document.createElement("div")
     ele4.id = id
@@ -39,9 +50,9 @@ function addTask(){
     // this line helps us to put priortuiy to our tasks
     ele4.dataset.priority = getValue()
     ele4.append(justone)
-    ele4.append(ele3)
+    ele4.append(justtwo)
     //ele4.append(ele3)
-
+    const temp1 = ele4.style.backgroundColor
     const tasklist = document.querySelector(".my-tasks")
     tasklist.prepend(ele4)
 
@@ -55,6 +66,26 @@ function addTask(){
                 console.log(elementToDelete.parentNode)
                 elementToDelete.parentNode.removeChild(elementToDelete)
             }
+    })
+
+
+    check.addEventListener('change', function() {
+        
+        
+        if(this.checked)
+            {
+                ele4.style.backgroundColor = "green"
+                
+                console.log(temp1)
+            }
+        else{
+            ele4.style.backgroundColor = temp1
+            
+            console.log(temp1)
+        }
+
+        
+        
     })
 
     document.getElementById("taskname").value = ""
