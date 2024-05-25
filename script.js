@@ -19,9 +19,9 @@ function addTask(){
         }
 
     const ele1 = document.createElement("p")
-    ele1.textContent = `task : ${task}`
+    ele1.textContent = `${task}`
     const ele2 = document.createElement("p")
-    ele2.textContent = `name : ${description}`
+    ele2.textContent = `${description}`
     const priority = document.createElement("select")
     priority.name = "choices"
     priority.id = "new-choice"
