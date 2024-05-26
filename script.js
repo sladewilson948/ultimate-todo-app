@@ -6,17 +6,16 @@
 // });
 
 
-function addTask(){
+function addTask() {
 
-    
+
     const id = "ele" + getUniqueId()
     const task = document.getElementById("taskname").value
     const description = document.getElementById("description").value
-    if(task=="" || description=="")
-        {
-            alert(`Please provide required details to start`)
-            return
-        }
+    if (task == "" || description == "") {
+        alert(`Please provide required details to start`)
+        return
+    }
 
     const ele1 = document.createElement("p")
     ele1.textContent = `${task}`
@@ -43,9 +42,8 @@ function addTask(){
     ele3.id = "my-delete"
     ele3.textContent = "Delete"
 
-    const check = document.createElement("input")
-    check.type = "checkbox"
-    check.id = "click-me"
+    const check = document.createElement("button")
+
 
     const justone = document.createElement("p")
     const justtwo = document.createElement("p1")
@@ -57,7 +55,7 @@ function addTask(){
 
     justtwo.append(ele3)
     justtwo.append(check)
-    
+
     const ele4 = document.createElement("div")
     ele4.id = id
     ele4.className = "item"
@@ -67,45 +65,62 @@ function addTask(){
     ele4.append(justone)
     ele4.append(justtwo)
     //ele4.append(ele3)
-    
+
     const tasklist = document.querySelector(".my-tasks")
     tasklist.prepend(ele4)
 
-    ele3.addEventListener('click', function() {
+    ele3.addEventListener('click', function () {
 
-        
+
         let elementToDelete = document.getElementById(id)
-        if(elementToDelete)
-            {
-                console.log(tasklist==elementToDelete.parentNode)
-                console.log(elementToDelete.parentNode)
-                elementToDelete.parentNode.removeChild(elementToDelete)
-            }
+        if (elementToDelete) {
+            console.log(tasklist == elementToDelete.parentNode)
+            console.log(elementToDelete.parentNode)
+            elementToDelete.parentNode.removeChild(elementToDelete)
+        }
     })
     let temp1 = ele4.style.backgroundColor
-    priority.addEventListener('change', function(){
-        if(priority.value==3)
-            {
-                ele4.style.backgroundColor = "#CBB114"
-                ele4.dataset.priority = "Low"
-                temp1 = "#CBB114"
-            }
-        else if(priority.value==2)
-            {
-                ele4.style.backgroundColor = "#CF7014"
-                ele4.dataset.priority = "Medium"
-                temp1 = "#CF7014"
+    priority.addEventListener('change', function () {
+        if (priority.value == 3) {
+            ele4.style.backgroundColor = "#CBB114"
+            ele4.dataset.priority = "Low"
+            temp1 = "#CBB114"
+        }
+        else if (priority.value == 2) {
+            ele4.style.backgroundColor = "#CF7014"
+            ele4.dataset.priority = "Medium"
+            temp1 = "#CF7014"
 
-            }
-        else{
+        }
+        else {
             ele4.style.backgroundColor = "#CF4214"
             ele4.dataset.priority = "High"
             temp1 = "#CF4214"
         }
     })
-    check.addEventListener('change', function() {
-        ele4.style.backgroundColor = this.checked?"green":temp1
-    })
+
+    check.textContent = "Close"
+    check.id = "click-me"
+    let flag = true
+    check.onclick = function () {
+
+        console.log("Button is pressed")
+        console.log(flag)
+        if (flag)
+            {
+                ele4.style.backgroundColor = "green"
+                check.textContent = "Reopen"
+                flag = false
+            }
+        else{
+                ele4.style.backgroundColor = temp1
+                flag = true
+                check.textContent = "Close"
+        }
+        
+    }
+
+
 
     document.getElementById("taskname").value = ""
     document.getElementById("description").value = ""
@@ -114,47 +129,45 @@ function addTask(){
 
 
 
-function getUniqueId()
 
-{
-    return Math.floor(Math.random()*10000)
+// check.addEventListener('onclick', function() {
+//     console.log("Button is pressed!!!")
+//     ele4.style.backgroundColor = this.checked?"green":temp1
+// })
+
+
+function getUniqueId() {
+    return Math.floor(Math.random() * 10000)
 }
 
 
-function getValue()
-{
-    if(document.getElementById("choice").value==3)
-        {
-            return 'Low'
-        }
-    else if(document.getElementById("choice").value==2)
-        {
-            return 'Medium'
-        }
-    else{
+function getValue() {
+    if (document.getElementById("choice").value == 3) {
+        return 'Low'
+    }
+    else if (document.getElementById("choice").value == 2) {
+        return 'Medium'
+    }
+    else {
         return 'High'
     }
 }
 
-function getColor()
-{
-    if(document.getElementById("choice").value==3)
-        {
-            return "#CBB114"
-        }
-    else if(document.getElementById("choice").value==2)
-        {
-            return "#CF7014"
-        }
-    else{
+function getColor() {
+    if (document.getElementById("choice").value == 3) {
+        return "#CBB114"
+    }
+    else if (document.getElementById("choice").value == 2) {
+        return "#CF7014"
+    }
+    else {
         return "#CF4214"
     }
 }
 
 
 
-function sortTasksHL()
-{
+function sortTasksHL() {
 
 
     const taskList = document.querySelector(".my-tasks")
@@ -162,11 +175,11 @@ function sortTasksHL()
     console.log(tasks)
     const priorityOrder = { 'High': 1, 'Medium': 2, 'Low': 3 };
 
-            // Sort the items based on their data-priority attribute
-            tasks.sort((a, b) => {
-                return priorityOrder[a.dataset.priority] - priorityOrder[b.dataset.priority];
-            })
-    
+    // Sort the items based on their data-priority attribute
+    tasks.sort((a, b) => {
+        return priorityOrder[a.dataset.priority] - priorityOrder[b.dataset.priority];
+    })
+
     tasks.forEach(task => {
         taskList.appendChild(task)
     })
@@ -174,8 +187,7 @@ function sortTasksHL()
 
 }
 
-function sortTasksLH()
-{
+function sortTasksLH() {
 
 
     const taskList = document.querySelector(".my-tasks")
@@ -184,32 +196,30 @@ function sortTasksLH()
     console.log(tasks)
     const priorityOrder = { 'High': 1, 'Medium': 2, 'Low': 3 };
 
-            // Sort the items based on their data-priority attribute
-            tasks.sort((a, b) => {
-                return priorityOrder[b.dataset.priority] - priorityOrder[a.dataset.priority];
-            })
-    
+    // Sort the items based on their data-priority attribute
+    tasks.sort((a, b) => {
+        return priorityOrder[b.dataset.priority] - priorityOrder[a.dataset.priority];
+    })
+
     tasks.forEach(task => {
         taskList.appendChild(task)
     })
 
 }
 
-function shuffle()
-{
+function shuffle() {
 
 
     const taskList = document.querySelector(".my-tasks")
     const tasks = Array.from(taskList.getElementsByClassName("item"))
 
-    for(let index in tasks)
-        {
-            new_idx = Math.floor(Math.random()*tasks.length)
-            let temp = tasks[index]
-            tasks[index] = tasks[new_idx]
-            tasks[new_idx] = temp
-        }
-    
+    for (let index in tasks) {
+        new_idx = Math.floor(Math.random() * tasks.length)
+        let temp = tasks[index]
+        tasks[index] = tasks[new_idx]
+        tasks[new_idx] = temp
+    }
+
     tasks.forEach(task => {
         taskList.appendChild(task)
     })

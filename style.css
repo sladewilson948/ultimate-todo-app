@@ -191,9 +191,13 @@ h2
 
 #click-me
 {
-    height: 20px;
-    width: -20px;
-    background-color: #fae1a4;
+    background-color: #000000;
+    color: azure;
+    height: 35px;
+    font-family: "Courier Prime", monospace;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 4px solid black;
 }
 
 
@@ -405,9 +409,13 @@ h2
 
 #click-me
 {
-    height: 15px;
-    width: -15px;
-    background-color: #fae1a4;
+    background-color: #000000;
+    color: azure;
+    height: 20px;
+    font-family: "Courier Prime", monospace;
+    font-size: 10px;
+    padding: 5px;
+    border-radius: 4px solid black;
 }
 
 
