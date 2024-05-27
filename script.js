@@ -5,6 +5,8 @@
 //     e.returnValue = 'Are you sure you want to leave?';
 // });
 
+const editform = document.querySelector(".edit-form")
+editform.style.display = "none"
 
 function addTask() {
 
@@ -43,6 +45,30 @@ function addTask() {
     ele3.textContent = "Delete"
 
     const check = document.createElement("button")
+    const edit = document.createElement("button")
+    edit.textContent = "Edit"
+    edit.id = "my-edit"
+
+    edit.onclick = function()
+    {
+        
+        editform.style.display = "block"
+        document.getElementById("new_taskname").value = ele1.textContent
+        document.getElementById("new_description").value = ele2.textContent
+        const edit_button = document.getElementById("save-edit")
+        edit_button.onclick = function()
+        {
+            const new_title = document.getElementById("new_taskname").value
+            const new_description = document.getElementById("new_description").value
+            console.log(new_title)
+            console.log(new_description)
+            ele1.textContent = `${new_title}`
+            ele2.textContent = `${new_description}`
+            editform.style.display = "none"
+        }
+
+
+    }
 
 
     const justone = document.createElement("p")
@@ -55,6 +81,7 @@ function addTask() {
 
     justtwo.append(ele3)
     justtwo.append(check)
+    justtwo.append(edit)
 
     const ele4 = document.createElement("div")
     ele4.id = id
@@ -205,6 +232,8 @@ function sortTasksLH() {
         taskList.appendChild(task)
     })
 
+
+    
 }
 
 function shuffle() {
@@ -225,3 +254,11 @@ function shuffle() {
     })
 
 }
+
+
+function closeform()
+    {
+        
+
+
+    }
