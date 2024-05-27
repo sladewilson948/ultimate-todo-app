@@ -417,6 +417,52 @@ h2
     width: 125px;
 }
 
+.edit-form {
+    display: none; /* Hide the form by default */
+    position: fixed; /* Stay in place */
+    font-family: "Courier Prime", monospace;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Center the form */
+    width: 300px; /* Width of the form */
+    padding: 20px;
+    background-color: #ffcc49;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Make sure it stays on top */
+}
+.edit-form h1
+{
+    font-size: 20px;
+}
+
+.edit-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-form label {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.edit-form input {
+    margin-bottom: 20px;
+    font-weight: 600;
+    padding: 10px;
+    font-size: 15px;
+    font-family: "Courier Prime", monospace;
+    
+}
+
+.edit-form button {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    font-family: "Courier Prime", monospace;
+    background-color: #000000;
+    color: white;
+}
 
 .container
 {
@@ -463,10 +509,21 @@ h2
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 120px;
+    height: 80px;
 }
 
 #click-me
+{
+    background-color: #000000;
+    color: azure;
+    height: 20px;
+    font-family: "Courier Prime", monospace;
+    font-size: 10px;
+    padding: 5px;
+    border-radius: 4px solid black;
+}
+
+#my-edit
 {
     background-color: #000000;
     color: azure;
